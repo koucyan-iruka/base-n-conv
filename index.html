@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>n進数変換機</title>
+        <meta name="viewport" content="width=device-width,inital-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script type="text/javascript">
+            let i = null;
+            let s = null;
+            function convert(){
+                if(insys.value == "Other"){
+                    cstsys.type = "text";
+                    result.value = parseInt((inputvalue.value),(cstsys.value));
+                }else {
+                    cstsys.type = "hidden";
+                    result.value = parseInt((inputvalue.value),(insys.value));
+                }
+            }
+            function convert2(){
+                if(s == "Other"){
+                    cstosys.type = "text";
+                    outvalue.value = Number(result.value).toString(cstosys.value);
+                }else {
+                    cstosys.type = "hidden";
+                    outvalue.value = Number(result.value).toString(osys.value);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container" text-align="center">
+        <br>
+        <br>
+        <form method="get" name="inputform">
+            <h5>n進数↔︎10進数</h5>
+            <br>
+            <select id="insys" value="" size="1" style="display:flow">
+                <option>n</option>
+                <option>2</option>
+                <option>8</option>
+                <option>16</option>
+                <option>Other</option>
+            </select><input type="hidden" id="cstsys" value="" placeholder="2-36" size="4">進数
+            <input type="text" id="inputvalue" value="" size="20" placeholder="数値">
+            <br>
+            <input type="button" class="btn" value="⬇" id="run" onclick="convert()">
+            <br>
+          10進数:<input type="number" id="result" value="" size="20" placeholder="結果">
+            <br>
+            <input type="button" class="btn" value="⬇" id="run" onclick="convert2()">
+            <br>
+            <select id="osys" value="" size="1" style="display:flow">
+                <option>n</option>
+                <option>2</option>
+                <option>8</option>
+                <option>16</option>
+                <option>Other</option>
+            </select><input type="hidden" id="cstosys" value="" placeholder="2-36" size="4">進数
+            <input type="text" id="outvalue" value="" size="20" placeholder="結果" disabled>
+        </form>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </body>
+</html>
